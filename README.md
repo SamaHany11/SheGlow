@@ -1,5 +1,7 @@
 # SheGlow
 Beauty Product Shop Website
+
+
 Home:-
 1. Banner Section
 •	.banner-container: A container that holds the banners. It ensures no content overflows the container.
