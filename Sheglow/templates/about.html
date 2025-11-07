@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+{% block title %}Search Results{% endblock %}
+{% block head %}
+    <style>
+      
+        #about {
+            background-color: #AF5662;
+          
+        }
+
+        
+        .about-us-section {
+            position: relative;
+            min-height: 100vh;
+          
+            font-family: "Nunito", sans-serif;
+            padding-top: 5px;
+            ;
+            padding-bottom: 5px;
+            padding-left: 20px;
+          
+            padding-right: 5px;
+         
+            margin: 0;
+           
+            width: 100%;
+           
+            box-sizing: border-box;
+           
+        }
+
+      
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1500px;
+         
+            width: 100%;
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        
+        .text-left {
+            max-width: 50%;
+            
+            color: #FB8DA0;
+            text-align: left;
+            padding-right: 10px;
+           
+            padding-left: 90px;
+        }
+
+        .text-left h1 {
+            font-size: 3.5rem;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: lightpink;
+        }
+
+        .text-left h1 span {
+            color: #B71540;
+        }
+
+        .text-left p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: blanchedalmond;
+        }
+
+       
+        .image-right {
+            max-width: 45%;
+            
+            box-sizing: border-box;
+            border-radius: 20px;
+            margin: 0;
+            
+            padding: 0;
+          
+            display: flex;
+           
+            justify-content: flex-end;
+          
+            flex-shrink: 0;
+            overflow: hidden;
+           
+            background-size: cover;
+        
+            background-repeat: no-repeat;
+         
+            height: 100%;
+           
+            margin-left: 30px;
+          
+            margin-right: 0;
+            margin-top: 0;
+        }
+
+       
+     
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+     
+    }
+
+    .text-left {
+        max-width: 100%;
+        padding-left: 20px; 
+        text-align: center; 
+    }
+
+    .image-right {
+        max-width: 100%;
+        padding-left: 0;
+        height: 300px;
+        margin-left: 0;
+       
+        background-size: contain; 
+        background-position: center; 
+    }
+
+    .text-left h1 {
+        font-size: 2rem; 
+        padding-top: 20px;
+    }
+
+    .text-left p {
+        font-size: 1rem; 
+    }
+}
+
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .text-left {
+        padding-left: 50px;
+    }
+
+    .image-right {
+        max-width: 40%; 
+        height: 80%; 
+    }
+}
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{% endblock %}
+
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<script>
+Swal.fire({
+        icon: '{{ category }}' == 'success' ? 'success' : '{{ category }}' == 'error' ? 'error' : 'info',
+        title: '{{ message }}',
+        timer: 3000,
+        showConfirmButton: false
+    });
+
+</script>
+{% endfor %}
+{% endif %}
+{% endwith %}
+   
+    <div class="about-us-section" id="about">
+        <div class="about-content">
+            <div class="text-left">
+                <h1>Welcome To<br/>SHE<span>GLOW </span><i class="fas fa-heart care-icon"></i></h1>
+                <p>At SHE<span>GLOW</span>, we believe every person deserves to feel beautiful and confident in
+                    their skin. Our curated collection of premium makeup and skincare products is designed to help
+                    you radiate your inner glow. Whether you're looking for the perfect foundation, an eye-catching
+                    lipstick, or skincare that pampers your skin, SHEGLOW has everything you need to enhance your
+                    natural beauty.</p>
+                <p>Our commitment to quality, affordability, and inclusivity ensures that every product we offer is
+                    crafted with love, care, and your best interests in mind. Join us on a journey of
+                    self-expression and self-love!</p>
+            </div>
+            <div class="image-right">
+               
+                <img src="{{ url_for('static', filename='images/she.jpg') }}" alt="SHEGLOW Image">
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+   
